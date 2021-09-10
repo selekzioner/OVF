@@ -18,18 +18,19 @@ int CalculateMantissaDigits()
 {
   const auto epsilon = CalculateEpsilon<T>();
   int pow = 0;
+  T value(1);
 
-  while (true) {
+  do {
     ++pow;
-    T value = 1 + std::pow(T(10), -pow);
-    if (std::abs(value - 1) < epsilon / 2)
-      return pow;
-  }
+    value = 1 + std::pow(T(10), -pow);
+  } while (std::abs(value - 1) > epsilon / 2);
+  return pow + 1;
 }
 
 template <class T>
 int CalculateMinPow()
 {
+  const auto epsilon = CalculateEpsilon<T>();
   T value(1);
   int pow = 0;
 
@@ -85,13 +86,13 @@ int main ()
 
 
   std::cout << "float min pow: " << CalculateMinPow<float>() << ", float max pow: " << CalculateMaxPow<float>() << std::endl;
-  std::cout << "numeric_limits float min pow: " << std::numeric_limits<float>::min_exponent10 << ", numeric_limits float max pow: " << std::numeric_limits<float>::max_exponent10 << std::endl;
-  std::cout << "double min pow: " << CalculateMinPow<double>() << ", double max pow: " << CalculateMaxPow<double>() << std::endl;
-  std::cout << "numeric_limits double min pow: " << std::numeric_limits<double>::min_exponent10 << ", numeric_limits double max pow: " << std::numeric_limits<double>::max_exponent10 << std::endl;
-  std::cout << std::endl;
+  std::cout << "numeric_limits float min pow: " << std::numeric_limits<float>::min_exponent10 <<
+    ", numeric_limits float max pow: " << std::numeric_limits<float>::max_exponent10 << std::endl;
 
-  /*Compare<float>();
-  Compare<double>();*/
+  std::cout << "double min pow: " << CalculateMinPow<double>() << ", double max pow: " << CalculateMaxPow<double>() << std::endl;
+  std::cout << "numeric_limits double min pow: " << std::numeric_limits<double>::min_exponent10 <<
+    ", numeric_limits double max pow: " << std::numeric_limits<double>::max_exponent10 << std::endl;
+  std::cout << std::endl;
   
   return 0;
 }
