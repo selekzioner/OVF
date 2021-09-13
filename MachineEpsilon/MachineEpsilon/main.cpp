@@ -34,7 +34,7 @@ int CalculateMinPow()
   T value(1);
   int pow = 0;
 
-  while (std::abs(value) > std::numeric_limits<T>::min()) {
+  while (std::abs(value) > std::abs(std::numeric_limits<T>::min())) {
     ++pow;
     value /= 10;
   }
