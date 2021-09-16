@@ -22,10 +22,9 @@ private:
 
   double CalcPhi(const double iX) const
   {
-    return iX + _k * _function(iX);
+    return iX + _lambda * _function(iX);
   }
 
   const double _x0;
-  const double _k = 0.1;
-  const double _derivativeStep = 0.0001;
+  const double _lambda = 0.01;
 };

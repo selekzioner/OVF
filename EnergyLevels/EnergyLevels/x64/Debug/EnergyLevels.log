@@ -1,0 +1,21 @@
+﻿  main.cpp
+c:\users\aamar\documents\github\ovf\energylevels\sciplot\plotbase.hpp(389): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\energylevels\sciplot\plotbase.hpp(429): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\energylevels\sciplot\plot.hpp(548): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\aamar\documents\github\ovf\energylevels\sciplot\plot3d.hpp(234): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\aamar\documents\github\ovf\energylevels\sciplot\figure.hpp(215): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\energylevels\sciplot\figure.hpp(271): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\energylevels\sciplot\plot.hpp(305): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  c:\users\aamar\documents\github\ovf\energylevels\sciplot\plot.hpp(354): note: see reference to function template instantiation 'sciplot::DrawSpecs &sciplot::Plot::drawWithVecs<X,Y>(const std::string &,const X &,const Y &)' being compiled
+          with
+          [
+              X=sciplot::Vec,
+              Y=sciplot::Vec
+          ]
+  c:\users\aamar\documents\github\ovf\energylevels\energylevels\main.cpp(32): note: see reference to function template instantiation 'sciplot::DrawSpecs &sciplot::Plot::drawCurve<sciplot::Vec,sciplot::Vec>(const X &,const Y &)' being compiled
+          with
+          [
+              X=sciplot::Vec,
+              Y=sciplot::Vec
+          ]
+  EnergyLevels.vcxproj -> C:\Users\aamar\Documents\GitHub\OVF\EnergyLevels\x64\Debug\EnergyLevels.exe

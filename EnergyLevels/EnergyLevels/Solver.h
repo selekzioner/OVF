@@ -15,6 +15,6 @@ public:
 protected:
   virtual double RunImpl() = 0;
 
-  const Utils::Function& _function;
+  const Utils::Function _function;
   const double _tol = 100000 * std::numeric_limits<double>::epsilon();
 };

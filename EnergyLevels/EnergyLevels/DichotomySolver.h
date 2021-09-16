@@ -13,7 +13,8 @@ public:
 private:
   double RunImpl() override
   {
-    if (_function(_rightBound) * _function(_leftBound) < 0.0)
+    auto res = _function(_rightBound) * _function(_leftBound);
+    if (res > 0.0)
       throw std::out_of_range("invalid left & right bounds");
 
     double x = 0;
