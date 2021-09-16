@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\aamar\documents\github\ovf\integrals\sciplot\plotbase.hpp(389): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\integrals\sciplot\plotbase.hpp(429): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\integrals\sciplot\plot.hpp(548): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\aamar\documents\github\ovf\integrals\sciplot\plot3d.hpp(234): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\aamar\documents\github\ovf\integrals\sciplot\figure.hpp(215): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\integrals\sciplot\figure.hpp(271): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+  Integrals.vcxproj -> C:\Users\aamar\Documents\GitHub\OVF\Integrals\x64\Debug\Integrals.exe
