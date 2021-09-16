@@ -34,20 +34,17 @@ void PlotFunc(const Utils::Function& iFunc, const double a, const double b)
 
   DichotomySolver dSolver(iFunc, -4.9, -3.0);
   const auto dRoot = dSolver.Solve();
-  plot.drawCurveWithPoints(Vec{ dRoot }, Vec{ 0.0 }).
-    lineWidth(10).label("Dichotomy").lineColor("red");
+  plot.drawCurveWithPoints(Vec{ dRoot }, Vec{ 0.0 }).lineWidth(10).label("Dichotomy").lineColor("red");
   std::cout << "Dichotomy: " << dRoot << std::endl;
 
   SimpleIterationsSolver siSolver(iFunc, -4.9);
   const auto siRoot = siSolver.Solve();
-  plot.drawCurveWithPoints(Vec{ siRoot }, Vec{ 0.0 }).
-    lineWidth(7).label("SimpleIterations").lineColor("blue");
+  plot.drawCurveWithPoints(Vec{ siRoot }, Vec{ 0.0 }).lineWidth(7).label("SimpleIterations").lineColor("blue");
   std::cout << "SimpleIterations: " << siRoot << std::endl;
 
   NewtonSolver nSolver(iFunc, -4.9);
   const auto nRoot = nSolver.Solve();
-  plot.drawCurveWithPoints(Vec{ nRoot }, Vec{ 0.0 }).
-    lineWidth(3).label("Newton").lineColor("green");
+  plot.drawCurveWithPoints(Vec{ nRoot }, Vec{ 0.0 }).lineWidth(3).label("Newton").lineColor("green");
   std::cout << "Newton: " << nRoot << std::endl;
 
   plot.show();

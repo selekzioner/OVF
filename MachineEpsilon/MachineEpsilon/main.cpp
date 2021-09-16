@@ -93,6 +93,8 @@ int main ()
   std::cout << "numeric_limits double min pow: " << std::numeric_limits<double>::min_exponent10 <<
     ", numeric_limits double max pow: " << std::numeric_limits<double>::max_exponent10 << std::endl;
   std::cout << std::endl;
+
+  Compare<double>();
   
   return 0;
 }
