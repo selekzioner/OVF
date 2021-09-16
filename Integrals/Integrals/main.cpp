@@ -8,10 +8,12 @@ using namespace sciplot;
 constexpr unsigned minIntervalCount = 4;
 constexpr unsigned maxIntervalCount = 32;
 
+// pi / 2
 double Func1(const double iX) {
   return 1 / (1 + iX * iX);
 }
 
+// 1.29589400873
 double Func2(const double iX) {
   return std::pow(iX, 1.0 / 3.0) * std::exp(std::sin(iX));
 }
