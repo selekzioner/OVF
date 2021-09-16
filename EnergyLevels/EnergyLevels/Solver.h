@@ -5,9 +5,16 @@
 class Solver {
 public:
   explicit Solver(const Utils::Function& iFunction) : _function(iFunction) {}
-  virtual double Solve() = 0;
   virtual ~Solver() = default;
 
+  double Solve()
+  {
+    return RunImpl();
+  }
+
 protected:
+  virtual double RunImpl() = 0;
+
   const Utils::Function& _function;
+  const double _tol = 100000 * std::numeric_limits<double>::epsilon();
 };

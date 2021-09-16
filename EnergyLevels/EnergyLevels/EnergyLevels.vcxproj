@@ -126,7 +126,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DichotomySolver.h" />
     <ClInclude Include="NewtonSolver.h" />
+    <ClInclude Include="SimpleIterationsSolver.h" />
     <ClInclude Include="Solver.h" />
     <ClInclude Include="Utils.h" />
   </ItemGroup>
