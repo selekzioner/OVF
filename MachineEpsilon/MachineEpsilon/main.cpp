@@ -23,7 +23,7 @@ int CalculateMantissaDigits()
   do {
     ++pow;
     value = 1 + std::pow(T(10), -pow);
-  } while (std::abs(value - 1) > epsilon / 2);
+  } while (std::abs(value - 1) > std::numeric_limits<T>::min());
   return pow + 1;
 }
 
@@ -94,7 +94,7 @@ int main ()
     ", numeric_limits double max pow: " << std::numeric_limits<double>::max_exponent10 << std::endl;
   std::cout << std::endl;
 
-  Compare<double>();
+  //Compare<double>();
   
   return 0;
 }

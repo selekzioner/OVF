@@ -35,6 +35,7 @@ void CalcTrapezoidal(const FunctionT& iFunc, const double a, const double b)
 {
   std::cout << "Trapezoidal:" << std::endl;
   for (unsigned i = minIntervalCount; i <= maxIntervalCount; i *= 2) {
+    std::cout << i << " intervals: ";
     std::vector<double> xValues;
     Linspace(a, b, 1 / static_cast<double>(i), xValues);
     Trapezoidal calc(iFunc, xValues);
@@ -47,6 +48,7 @@ void CalcSimpson(const FunctionT& iFunc, const double a, const double b)
 {
   std::cout << "Simpson:" << std::endl;
   for (unsigned i = minIntervalCount; i <= maxIntervalCount; i *= 2) {
+    std::cout << i << " intervals: ";
     std::vector<double> xValues;
     Linspace(a, b, 1 / static_cast<double>(i), xValues);
     Simpson calc(iFunc, xValues);
