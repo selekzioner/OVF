@@ -37,7 +37,7 @@ public:
 private:
   double CalculateTerm(const double x0, const double x1) override
   {
-    return  std::abs(x0 - x1) * (_function(x0) + _function(x1)) / 2;
+    return  std::abs(x0 - x1) * (_function(x0) + _function(x1)) / 2.0;
   }
 };
 
@@ -49,6 +49,6 @@ public:
 private:
   double CalculateTerm(const double x0, const double x1) override
   {
-    return (x1 - x0) / 6 * (_function(x0) + 4 * _function((x0 + x1) / 2) + _function(x1));
+    return (x1 - x0) / 6.0 * (_function(x0) + 4.0 * _function((x0 + x1) / 2.0) + _function(x1));
   }
 };
