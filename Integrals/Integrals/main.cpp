@@ -6,11 +6,11 @@
 using namespace sciplot;
 
 constexpr unsigned minIntervalCount = 4;
-constexpr unsigned maxIntervalCount = 32;
+constexpr unsigned maxIntervalCount = 128;
 
 // pi / 2
 double Func1(const double iX) {
-  return 1 / (1 + iX * iX);
+  return 1.0 / (1.0 + iX * iX);
 }
 
 // 1.29589400873
@@ -57,8 +57,13 @@ void CalcSimpson(const FunctionT& iFunc, const double a, const double b)
 
 int main()
 {
+  std::cout << "Function1:" << std::endl;
   CalcTrapezoidal(Func1, -1, 1);
   CalcSimpson(Func1, -1, 1);
+
+  std::cout << "Function2:" << std::endl;
+  CalcTrapezoidal(Func2, 0, 1);
+  CalcSimpson(Func2, 0, 1);
 
   return 0;
 }
