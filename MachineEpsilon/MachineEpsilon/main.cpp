@@ -24,7 +24,7 @@ int CalculateMantissaDigits()
     ++pow;
     value = 1 + std::pow(T(10), -pow);
   } while (std::abs(value - 1) > std::numeric_limits<T>::min());
-  return pow + 1;
+  return pow;
 }
 
 template <class T>
@@ -34,7 +34,7 @@ int CalculateMinPow()
   T value(1);
   int pow = 0;
 
-  while (std::abs(value) > std::abs(std::numeric_limits<T>::min())) {
+  while (std::abs(value) > std::abs(std::numeric_limits<T>::denorm_min())) {
     ++pow;
     value /= 10;
   }
