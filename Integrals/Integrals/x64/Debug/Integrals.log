@@ -5,4 +5,18 @@ c:\users\aamar\documents\github\ovf\integrals\sciplot\plot.hpp(548): warning C42
 c:\users\aamar\documents\github\ovf\integrals\sciplot\plot3d.hpp(234): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\users\aamar\documents\github\ovf\integrals\sciplot\figure.hpp(215): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
 c:\users\aamar\documents\github\ovf\integrals\sciplot\figure.hpp(271): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\integrals\sciplot\plot.hpp(305): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  c:\users\aamar\documents\github\ovf\integrals\sciplot\plot.hpp(360): note: see reference to function template instantiation 'sciplot::DrawSpecs &sciplot::Plot::drawWithVecs<X,Y>(const std::string &,const X &,const Y &)' being compiled
+          with
+          [
+              X=std::vector<double,std::allocator<double>>,
+              Y=std::vector<double,std::allocator<double>>
+          ]
+  c:\users\aamar\documents\github\ovf\integrals\integrals\main.cpp(79): note: see reference to function template instantiation 'sciplot::DrawSpecs &sciplot::Plot::drawCurveWithPoints<std::vector<double,std::allocator<_Ty>>,std::vector<_Ty,std::allocator<_Ty>>>(const X &,const Y &)' being compiled
+          with
+          [
+              _Ty=double,
+              X=std::vector<double,std::allocator<double>>,
+              Y=std::vector<double,std::allocator<double>>
+          ]
   Integrals.vcxproj -> C:\Users\aamar\Documents\GitHub\OVF\Integrals\x64\Debug\Integrals.exe
