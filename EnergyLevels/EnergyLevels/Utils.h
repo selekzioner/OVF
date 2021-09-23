@@ -11,6 +11,12 @@ namespace Utils
     return (iFunction(iX + iDerivativeStep) - iFunction(iX)) / iDerivativeStep;
   }
 
+  inline double Derivative2(const Function& iFunction, const double iX, const double iDerivativeStep)
+  {
+    return (Derivative(iFunction, iX + iDerivativeStep, iDerivativeStep)
+      - Derivative(iFunction, iX, iDerivativeStep)) / iDerivativeStep;
+  }
+
   inline sciplot::Vec Linspace(const double iX0, const double iX1, const size_t iCount)
   {
     sciplot::Vec oLinspace(iCount + 1);

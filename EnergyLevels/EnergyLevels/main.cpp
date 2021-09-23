@@ -9,7 +9,7 @@ using namespace sciplot;
 
 double WaveFunction(const double x)
 {
-  const double u0 = 1000;
+  const double u0 = 10;
   const double a = 10;
 
   return -std::sqrt(-u0 / x - 1.0)
@@ -32,17 +32,18 @@ void PlotFunc(const Utils::Function& iFunc, const double a, const double b)
   plot.drawCurve(x, y0).lineColor("black").lineWidth(1).label("");
   plot.drawCurve(x, y).lineWidth(3).label("WaveFunction");
 
-  DichotomySolver dSolver(iFunc, -4.9, -3.0);
+  DichotomySolver dSolver(iFunc, -1.6, -1.3);
   const auto dRoot = dSolver.Solve();
   plot.drawCurveWithPoints(Vec{ dRoot }, Vec{ 0.0 }).lineWidth(10).label("Dichotomy").lineColor("red");
   std::cout << "Dichotomy: " << dRoot << std::endl;
 
-  SimpleIterationsSolver siSolver(iFunc, -4.9);
+  SimpleIterationsSolver siSolver(iFunc, -1.4);
   const auto siRoot = siSolver.Solve();
   plot.drawCurveWithPoints(Vec{ siRoot }, Vec{ 0.0 }).lineWidth(7).label("SimpleIterations").lineColor("blue");
   std::cout << "SimpleIterations: " << siRoot << std::endl;
 
-  NewtonSolver nSolver(iFunc, -4.9);
+  NewtonSolver nSolver(iFunc, -1.4);
+  std::cout << "Is newton converges: " << nSolver.IsConverge() << std::endl;
   const auto nRoot = nSolver.Solve();
   plot.drawCurveWithPoints(Vec{ nRoot }, Vec{ 0.0 }).lineWidth(3).label("Newton").lineColor("green");
   std::cout << "Newton: " << nRoot << std::endl;

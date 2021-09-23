@@ -7,6 +7,14 @@ class NewtonSolver : public Solver {
 public:
   explicit NewtonSolver(const Utils::Function& iFunc, const double iX0) : Solver(iFunc), _x0(iX0) {}
 
+  bool IsConverge() const
+  {
+    const double abs = std::abs(_function(_x0) * Utils::Derivative2(_function, _x0, _derivativeStep));
+    if (abs < std::pow(Utils::Derivative(_function, _x0, _derivativeStep), 2))
+      return true;
+    return false;
+  }
+
 private:
   double RunImpl() override
   {
