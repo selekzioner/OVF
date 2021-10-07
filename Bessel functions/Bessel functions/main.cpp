@@ -27,19 +27,19 @@ double BesselFunction(const double x, const int m)
 
 double BesselFunctionDerivative(const double x, const int m)
 {
-  const auto derivativeStep = 10e-6;
+  const auto derivativeStep = 10e-7;
   return (BesselFunction(x + derivativeStep, m)
     - BesselFunction(x - derivativeStep, m)) / (2.0 * derivativeStep);
 }
 
 int main()
 {
-  double x = 0.1;
-  while (x < 1.1) {
+  double x = 0.0;
+  while (x <= 2 * M_PI) {
     std::cout << "x = " << x << std::endl;
     const double result = BesselFunctionDerivative(x, 0) + BesselFunction(x, 1);
     std::cout << result << std::endl;
-    x += 0.1;
+    x += 0.05;
   }
   return 0;
 }

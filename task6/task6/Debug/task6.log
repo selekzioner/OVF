@@ -1,0 +1,10 @@
+﻿  main.cpp
+c:\users\aamar\documents\github\ovf\task6\sciplot\specs\ticsspecsmajor.hpp(149): warning C4018: '<': signed/unsigned mismatch
+c:\users\aamar\documents\github\ovf\task6\sciplot\specs\ticsspecsmajor.hpp(160): warning C4018: '<': signed/unsigned mismatch
+c:\users\aamar\documents\github\ovf\task6\sciplot\specs\ticsspecsmajor.hpp(171): warning C4018: '<': signed/unsigned mismatch
+c:\users\aamar\documents\github\ovf\task6\sciplot\specs\ticsspecsmajor.hpp(182): warning C4018: '<': signed/unsigned mismatch
+c:\users\aamar\documents\github\ovf\task6\sciplot\plotbase.hpp(389): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\task6\sciplot\plotbase.hpp(429): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\task6\sciplot\figure.hpp(215): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\task6\sciplot\figure.hpp(271): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+  task6.vcxproj -> C:\Users\aamar\Documents\GitHub\OVF\task6\Debug\task6.exe

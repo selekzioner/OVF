@@ -12,7 +12,7 @@ c:\users\aamar\documents\github\ovf\integrals\sciplot\plot.hpp(305): warning C42
               X=std::vector<double,std::allocator<double>>,
               Y=std::vector<double,std::allocator<double>>
           ]
-  c:\users\aamar\documents\github\ovf\integrals\integrals\main.cpp(79): note: see reference to function template instantiation 'sciplot::DrawSpecs &sciplot::Plot::drawCurveWithPoints<std::vector<double,std::allocator<_Ty>>,std::vector<_Ty,std::allocator<_Ty>>>(const X &,const Y &)' being compiled
+  c:\users\aamar\documents\github\ovf\integrals\integrals\main.cpp(97): note: see reference to function template instantiation 'sciplot::DrawSpecs &sciplot::Plot::drawCurveWithPoints<std::vector<double,std::allocator<_Ty>>,std::vector<_Ty,std::allocator<_Ty>>>(const X &,const Y &)' being compiled
           with
           [
               _Ty=double,

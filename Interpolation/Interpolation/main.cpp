@@ -60,7 +60,7 @@ int main()
       yInterpolated[i] = Interpolate(yToInterpolate, x, xValues[i]);
     }
 
-    plot.drawCurve(xValues, yInterpolated - yLogs).lineWidth(2).
+    plot.drawCurveWithPoints(xValues, yInterpolated - yLogs).lineWidth(2).
     label("n = " + std::to_string(yToInterpolate.size() - 1));
   }
   plot.size(800, 500);
