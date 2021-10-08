@@ -51,18 +51,17 @@ void SolveRK2(const double iX0, const double iY0, const double iStep, std::valar
 
 int main()
 {
-  const auto x0Vals = Linspace(1, 6);
-  const auto y0Vals = Linspace(1, 6);
+  const auto x0Vals = Linspace(1, 3);
+  const auto y0Vals = Linspace(1, 3);
 
   Plot plot;
-  for (size_t i = 0; i < x0Vals.size(); i++) {
-    const auto& x0 = x0Vals[i];
-    const auto& y0 = y0Vals[i];
+  for (const auto& x0 : x0Vals) {
+    for (const auto& y0 : y0Vals) {
+      std::valarray<double> xVals, yVals;
+      SolveRK2(x0, y0, 0.0001, xVals, yVals);
 
-    std::valarray<double> xVals, yVals;
-    SolveRK2(x0, y0, 0.0001, xVals, yVals);
-
-    plot.drawCurve(xVals, yVals).lineWidth(2).label(std::to_string(x0) + ", " + std::to_string(y0));
+      plot.drawCurve(xVals, yVals).lineWidth(2).label(std::to_string(x0) + ", " + std::to_string(y0));
+    }
   }
 
   plot.size(1000, 800);
