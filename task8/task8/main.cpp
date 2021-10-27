@@ -27,14 +27,6 @@ double F(const double iU, const double iV)
   return 998 * iU + 1998 * iV;
 }
 
-double dxdt(double x, double y) {
-  return 998 * x + 1998 * y;
-}
-
-double dydt(double x, double y) {
-  return -999 * x - 1999 * y;
-}
-
 double G(const double iU, const double iV)
 {
   return -999 * iU - 1999 * iV;
