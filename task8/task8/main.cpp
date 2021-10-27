@@ -27,6 +27,14 @@ double F(const double iU, const double iV)
   return 998 * iU + 1998 * iV;
 }
 
+double dxdt(double x, double y) {
+  return 998 * x + 1998 * y;
+}
+
+double dydt(double x, double y) {
+  return -999 * x - 1999 * y;
+}
+
 double G(const double iU, const double iV)
 {
   return -999 * iU - 1999 * iV;
@@ -54,7 +62,7 @@ void EulerExplicit(const std::valarray<double>& iTVals, const double iStart1, co
 
   for (size_t i = 0; i < iTVals.size() - 1; i++) {
     oU[i + 1] = oU[i] + F(oU[i], oV[i]) * h;
-    oU[i + 1] = oV[i] + G(oU[i], oV[i]) * h;
+    oV[i + 1] = oV[i] + G(oU[i], oV[i]) * h;
   }
 }
 
@@ -81,16 +89,23 @@ void EulerImplicit(const std::valarray<double>& iTVals, const double iStart1, co
 
 int main()
 {
-  const auto tVals = GenerateLinspace(0, 2, 0.01);
-  std::valarray<double> uVals, vVals, uOrigin, vOrigin;
-
-  EulerExplicit(tVals, 1, 1, uVals, vVals);
-  GenerateArray(tVals, u, uVals);
-  GenerateArray(tVals, v, vVals);
+  const auto tVals = GenerateLinspace(0, 2, 0.001);
+  std::valarray<double> uValsE, vValsE, uValsI, vValsI, uOrigin, vOrigin;
 
   sciplot::Plot plot;
-  plot.drawCurve(tVals, uVals).lineWidth(2).label("u");
-  plot.drawCurve(tVals, vVals).lineWidth(2).label("v");
+
+  EulerExplicit(tVals, 1, 1, uValsE, vValsE);
+  plot.drawCurve(tVals, uValsE).lineWidth(3).label("expl u");
+  plot.drawCurve(tVals, vValsE).lineWidth(3).label("expl v");
+
+  EulerImplicit(tVals, 1, 1, uValsI, vValsI);
+  plot.drawCurve(tVals, uValsI).lineWidth(3).label("impl u");
+  plot.drawCurve(tVals, vValsI).lineWidth(3).label("impl v");
+
+  GenerateArray(tVals, u, uOrigin);
+  GenerateArray(tVals, v, vOrigin);
+  plot.drawCurve(tVals, uOrigin).lineWidth(2).label("origin u");
+  plot.drawCurve(tVals, vOrigin).lineWidth(2).label("origin v");
 
   plot.size(1000, 800);
   plot.show();
