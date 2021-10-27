@@ -69,7 +69,7 @@ std::valarray<double> SolveRungeKutta4(const double iT0, const std::valarray<dou
 
 int main ()
 {
-  const auto tVals = Linspace(0.0, 3.0, 10e-3);
+  const auto tVals = Linspace(0.0, 7.0, 10e-3);
   const auto eulerSolution = SolveEuler( 1.0, tVals);
   const auto rK2Solution = SolveRungeKutta2(1.0, tVals);
   const auto rK4Solution = SolveRungeKutta4(1.0, tVals);

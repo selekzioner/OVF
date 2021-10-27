@@ -11,7 +11,7 @@ constexpr double b = 2;
 constexpr double c = 2;
 constexpr double d = 10;
 
-std::valarray<double> Linspace(const double iT0, const double iT1, const double iStep = 1)
+std::valarray<double> Linspace(const double iT0, const double iT1, const double iStep = 1.0)
 {
   const auto numSteps = static_cast<size_t>((iT1 - iT0) / iStep);
   std::valarray<double> vec(numSteps + 1);
@@ -34,7 +34,7 @@ double YFunction(const double x, const double y)
 
 void SolveRK2(const double iX0, const double iY0, const double iStep, std::valarray<double>& oXVals, std::valarray<double>& oYVals)
 {
-  const std::valarray<double> tVals = Linspace(0, 1, iStep);
+  const std::valarray<double> tVals = Linspace(0, 50, iStep);
 
   oXVals.resize(tVals.size());
   oYVals.resize(tVals.size());
@@ -51,18 +51,33 @@ void SolveRK2(const double iX0, const double iY0, const double iStep, std::valar
 
 int main()
 {
-  const auto x0Vals = Linspace(1, 3);
-  const auto y0Vals = Linspace(1, 3);
+  const auto x0Vals = Linspace(1, 4);
+  const auto y0Vals = Linspace(1, 4);
 
   Plot plot;
-  for (const auto& x0 : x0Vals) {
+  /*for (size_t i = 0; i < x0Vals.size(); i++) {
+    std::valarray<double> xVals, yVals;
+    const auto& x0 = x0Vals[i], &y0 = y0Vals[i];
+
+    SolveRK2(x0, y0, 0.0001, xVals, yVals);
+
+    plot.drawCurve(xVals, yVals).lineWidth(2).label(std::to_string(x0) + ", " + std::to_string(y0));
+  }*/
+  /*for (const auto& x0 : x0Vals) {
     for (const auto& y0 : y0Vals) {
       std::valarray<double> xVals, yVals;
       SolveRK2(x0, y0, 0.0001, xVals, yVals);
 
       plot.drawCurve(xVals, yVals).lineWidth(2).label(std::to_string(x0) + ", " + std::to_string(y0));
     }
-  }
+  }*/
+  
+  std::valarray<double> xVals, yVals;
+  const std::valarray<double> tVals = Linspace(0, 50, 0.001);
+  SolveRK2(2, 2, 0.001, xVals, yVals);
+
+  plot.drawCurve(tVals, xVals).lineWidth(2).label("x(t)");
+  plot.drawCurve(tVals, yVals).lineWidth(2).label("y(t)");
 
   plot.size(1000, 800);
   plot.show();
