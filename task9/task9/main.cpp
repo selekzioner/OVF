@@ -33,6 +33,11 @@ void GenerateArray(const std::valarray<double>& iTVals, std::function<double(dou
   }
 }
 
+double Func(const double x)
+{
+  return -std::sin(x);
+}
+
 void Solve(const std::valarray<double>& iXVals, std::valarray<double>& oYVals)
 {
   const double h = iXVals[1] - iXVals[0];
@@ -45,7 +50,7 @@ void Solve(const std::valarray<double>& iXVals, std::valarray<double>& oYVals)
   eps.resize(iXVals.size());
   nu.resize(iXVals.size());
   eps[0] = -ct2 / (ct1 * h - ct2);
-  nu[0] = ct * h / (ct1*h - ct2);
+  nu[0] = ct * h / (ct1 * h - ct2);
 
   const auto secondDerivative = [](const double x) { return std::sin(x); };
 
@@ -68,9 +73,11 @@ int main()
 
   sciplot::Plot plot;
 
-  std::valarray<double> yVals;
+  std::valarray<double> yVals, yOrigin;
   Solve(xVals, yVals);
-  plot.drawCurve(xVals, yVals).lineWidth(2).label("y(x)");
+  GenerateArray(xVals, Func, yOrigin);
+  //plot.drawCurve(xVals, yVals).lineWidth(2).label("y(x)");
+  plot.drawCurve(xVals, yVals + yOrigin).lineWidth(2).label("difference");//"origin y(x)");
 
   plot.size(1000, 800);
   plot.show();

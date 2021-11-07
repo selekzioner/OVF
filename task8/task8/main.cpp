@@ -81,14 +81,14 @@ void EulerImplicit(const std::valarray<double>& iTVals, const double iStart1, co
 
 int main()
 {
-  const auto tVals = GenerateLinspace(0, 2, 0.001);
+  const auto tVals = GenerateLinspace(0, 2, 0.01);
   std::valarray<double> uValsE, vValsE, uValsI, vValsI, uOrigin, vOrigin;
 
   sciplot::Plot plot;
 
-  EulerExplicit(tVals, 1, 1, uValsE, vValsE);
+  /*EulerExplicit(tVals, 1, 1, uValsE, vValsE);
   plot.drawCurve(tVals, uValsE).lineWidth(3).label("expl u");
-  plot.drawCurve(tVals, vValsE).lineWidth(3).label("expl v");
+  plot.drawCurve(tVals, vValsE).lineWidth(3).label("expl v");*/
 
   EulerImplicit(tVals, 1, 1, uValsI, vValsI);
   plot.drawCurve(tVals, uValsI).lineWidth(3).label("impl u");
