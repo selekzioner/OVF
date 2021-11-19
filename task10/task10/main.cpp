@@ -86,7 +86,37 @@ void CalculateU(std::valarray<std::valarray<double>>& u, std::valarray<double>& 
   }
 }
 
-std::valarray<double> CalculateTemp(std::valarray<std::valarray<double>>& u)
+void U_n_plus_1(size_t n, std::valarray<double>& x, std::valarray<double>& t, std::valarray< std::valarray<double>>& u) {
+  std::valarray<double> cVals;
+  std::valarray<double> dVals;
+  std::valarray<double> tn;
+
+  const double r = (t[1] - t[0]) / (2 * (x[1] - x[0]) * (x[1] - x[0]));
+  const double a = -r;
+  const double b = (1 + 2 * r);
+  const double c = -r;
+
+  size_t N = x.size() - 2;
+  cVals.resize(N - 1);
+  dVals.resize(N);
+  tn.resize(N);
+
+  for (size_t i = 1; i < N; i++) {
+    dVals[i - 1] = CalcucateC(i, a, b, c);
+  }
+  for (size_t i = 1; i <= N; i++) {
+    dVals[i - 1] = CalculateD(u, n, i, a, b, c, r);
+    tn[i - 1] = dVals[i - 1];
+  }
+  for (size_t i = N - 1; i >= 1; i--) {
+    tn[i - 1] = dVals[i - 1] - cVals[i - 1] * tn[i];
+  }
+  for (size_t i = 1; i < u.size() - 1; i++) {
+    u[i][n] = tn[i - 1];
+  }
+}
+
+std::valarray<double> CalculateMaxTemp(std::valarray<std::valarray<double>>& u)
 {
   std::valarray<double> maxT;
   maxT.resize(u[0].size());
@@ -94,6 +124,16 @@ std::valarray<double> CalculateTemp(std::valarray<std::valarray<double>>& u)
     for (size_t t = 0; t < u[0].size(); t++) {
       maxT[t] = std::fmax(u[x][t], maxT[t]);
     }
+  }
+  return maxT;
+}
+
+std::valarray<double> CalculateMaxTemp1(std::valarray<std::valarray<double>>& u, size_t iT)
+{
+  std::valarray<double> maxT;
+  maxT.resize(u.size());
+  for (size_t x = 0; x < u.size(); x++) {
+    maxT[x] = u[x][iT];
   }
   return maxT;
 }
@@ -106,9 +146,13 @@ int main()
   CalculateU(u, x, t);
 
   sciplot::Plot plot;
-  plot.drawCurve(x, CalculateTemp(u)).lineWidth(2).label("maxT(x)");
-
   plot.size(1000, 800);
+  for (size_t i = 0; i < t.size(); i++) {
+    plot.drawCurve(x, CalculateMaxTemp1(u, i)).lineWidth(2);
+  }
+
+  /*plot.size(1000, 800);
+  plot.drawCurve(x, CalculateMaxTemp(u)).lineWidth(2).label("maxT(x)");*/
   plot.show();
 
   return 0;
