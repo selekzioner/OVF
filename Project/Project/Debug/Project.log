@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\aamar\documents\github\ovf\project\project\main.cpp(210): error C2653: 'Matrix': is not a class or namespace name
+c:\users\aamar\documents\github\ovf\project\project\main.cpp(210): error C3861: 'Construct': identifier not found
