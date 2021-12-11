@@ -1,0 +1,14 @@
+﻿  main.cpp
+c:\users\aamar\documents\github\ovf\project\sciplot\plotbase.hpp(389): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\project\sciplot\plotbase.hpp(429): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\project\sciplot\plot.hpp(548): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\aamar\documents\github\ovf\project\sciplot\plot3d.hpp(234): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+c:\users\aamar\documents\github\ovf\project\sciplot\figure.hpp(215): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\project\sciplot\figure.hpp(271): warning C4244: 'argument': conversion from 'double' to 'size_t', possible loss of data
+c:\users\aamar\documents\github\ovf\project\project\main.cpp(217): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating code
+  1 of 824 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Project.vcxproj -> C:\Users\aamar\Documents\GitHub\OVF\Project\x64\Release\Project.exe

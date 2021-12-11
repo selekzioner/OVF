@@ -17,8 +17,14 @@ std::valarray<double> t;
 
 double L = 1;
 
+double aX, aY;
+double bX, bY;
+double cX, cY;
+
+double X, Y;
+
 double f(double x, double y, double t) {
-  return (1 - x * x / L / L)*(1 - y * y / L / L) + (y / L + 1)*(1 - y * y / L / L)*sin(2 * M_PI * t);
+  return (1 - x * x / L / L) * (1 - y * y / L / L) + (y / L + 1)*(1 - y * y / L / L) * sin(2 * M_PI * t);
 }
 
 std::valarray<double> GenerateLinspace(const double iT0, const double iT1, const double iStep = 1)
@@ -40,19 +46,9 @@ void GenerateArray(const std::valarray<double>& iTVals, std::function<double(dou
   }
 }
 
-double yBoundFunction(double t) {
+double InitialDistribution(double x, double y) {
   return 0;
 }
-
-double tStartDistribution(double x, double y) {
-  return 0;
-}
-
-double aX, aY;
-double bX, bY;
-double cX, cY;
-
-double X, Y;
 
 double diX(size_t ix, size_t iy, size_t it)
 {
@@ -66,23 +62,16 @@ double diY(size_t ix, size_t iy, size_t it)
 
 void Init()
 {
-  x = GenerateLinspace(0, L, 0.03);
-  y = GenerateLinspace(0, L, 0.03);
-  t = GenerateLinspace(0, 1, 0.0005);
+  x = GenerateLinspace(0, L, 0.01);
+  y = GenerateLinspace(0, L, 0.01);
+  t = GenerateLinspace(0, 1, 0.005);
 
   u.resize(x.size());
   for (size_t ix = 0; ix < x.size(); ix++) {
     u[ix].resize(y.size());
     for (size_t iy = 0; iy < y.size(); iy++) {
       u[ix][iy].resize(t.size());
-      u[ix][iy][0] = tStartDistribution(x[ix], y[iy]);
-    }
-  }
-
-  for (size_t ix = 0; ix < x.size(); ix++) {
-    for (size_t it = 0; it < t.size(); it++) {
-      u[ix][0][it] = yBoundFunction(t[it]);
-      u[ix][y.size() - 1][it] = yBoundFunction(t[it]);
+      u[ix][iy][0] = InitialDistribution(x[ix], y[iy]);
     }
   }
 
@@ -126,7 +115,8 @@ double dsharpY(size_t ix, size_t iy, size_t it)
   return (diY(ix, iy, it - 1) - aY * dsharpY(ix, iy - 1, it)) / (bY - aY * csharpY(iy - 1));
 }
 
-void U_n_plus_1_2(size_t iy, size_t it) {
+/* U(n + 1) */
+void Un_x(size_t iy, size_t it) {
   std::valarray<double> csharpVec;
   std::valarray<double> dsharpVec;
   std::valarray<double> xn;
@@ -154,7 +144,7 @@ void U_n_plus_1_2(size_t iy, size_t it) {
   }
 }
 
-void U_n_plus_1(size_t ix, size_t it) {
+void Un_y(size_t ix, size_t it) {
   std::valarray<double> csharpVec;
   std::valarray<double> dsharpVec;
   std::valarray<double> yn;
@@ -187,17 +177,16 @@ void Calculate()
   size_t ts = t.size() - 1;
 
   for (size_t it = 1; it < t.size(); it++) {
-
-    std::cout << "Calculating " << it << "/" << ts << "\r";
+    std::cout << "Ready: " << it << "/" << ts << "\r";
 
     for (size_t iy = 1; iy < y.size() - 1; iy++) {
-      U_n_plus_1_2(iy, it);
+      Un_x(iy, it);
     }
 
     it++;
 
     for (size_t ix = 1; ix < x.size() - 1; ix++) {
-      U_n_plus_1(ix, it);
+      Un_y(ix, it);
     }
   }
 }
@@ -225,7 +214,7 @@ int main()
   Calculate();
 
   GNUDrawer gnuDrawer;
-  for (int i = t.size() - 1; i >= 0; i = i - 100) {
+  for (int i = t.size() - 1; i >= 0; i = i - 10) {
     std::vector<std::vector<double>> temp;
     const auto t = temperatureMap(i);
     temp.resize(t.size());
